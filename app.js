@@ -6,6 +6,7 @@ if (typeof politicsQuestions !== 'undefined') mergedDatabase = mergedDatabase.co
 if (typeof economicsQuestions !== 'undefined') mergedDatabase = mergedDatabase.concat(economicsQuestions);
 if (typeof internationalQuestions !== 'undefined') mergedDatabase = mergedDatabase.concat(internationalQuestions);
 if (typeof video1Questions !== 'undefined') mergedDatabase = mergedDatabase.concat(video1Questions);
+if (typeof video2Questions !== 'undefined') mergedDatabase = mergedDatabase.concat(video2Questions);
 
 // アプリ内では mergedDatabase を使用するように変更
 const finalQuestionDatabase = mergedDatabase;
