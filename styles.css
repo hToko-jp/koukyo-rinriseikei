@@ -12,50 +12,50 @@
     --success-hue: 140;
     --danger-hue: 0;
     --warning-hue: 40;
-    
+
     --bg-dark: hsl(var(--primary-hue), 20%, 10%);
     --bg-medium: hsl(var(--primary-hue), 15%, 15%);
     --bg-light: hsl(var(--primary-hue), 15%, 22%);
     --bg-card: hsl(var(--primary-hue), 15%, 18%);
-    
+
     --text-primary: hsl(0, 0%, 95%);
     --text-secondary: hsl(0, 0%, 70%);
     --text-muted: hsl(0, 0%, 50%);
-    
+
     --accent-primary: hsl(var(--primary-hue), 70%, 55%);
     --accent-secondary: hsl(var(--secondary-hue), 70%, 60%);
     --accent-success: hsl(var(--success-hue), 60%, 50%);
     --accent-danger: hsl(var(--danger-hue), 70%, 55%);
     --accent-warning: hsl(var(--warning-hue), 80%, 55%);
-    
-    --gradient-primary: linear-gradient(135deg, 
-        hsl(var(--primary-hue), 70%, 55%), 
-        hsl(var(--secondary-hue), 70%, 60%));
-    --gradient-success: linear-gradient(135deg, 
-        hsl(var(--success-hue), 60%, 50%), 
-        hsl(var(--success-hue), 60%, 60%));
-    --gradient-danger: linear-gradient(135deg, 
-        hsl(var(--danger-hue), 70%, 55%), 
-        hsl(var(--danger-hue), 70%, 65%));
-    
+
+    --gradient-primary: linear-gradient(135deg,
+            hsl(var(--primary-hue), 70%, 55%),
+            hsl(var(--secondary-hue), 70%, 60%));
+    --gradient-success: linear-gradient(135deg,
+            hsl(var(--success-hue), 60%, 50%),
+            hsl(var(--success-hue), 60%, 60%));
+    --gradient-danger: linear-gradient(135deg,
+            hsl(var(--danger-hue), 70%, 55%),
+            hsl(var(--danger-hue), 70%, 65%));
+
     /* スペーシング */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
-    
+
     /* ボーダーラジウス */
     --radius-sm: 0.5rem;
     --radius-md: 1rem;
     --radius-lg: 1.5rem;
-    
+
     /* シャドウ */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
     --shadow-glow: 0 0 20px rgba(100, 150, 255, 0.3);
-    
+
     /* トランジション */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
@@ -88,6 +88,7 @@ body {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -111,6 +112,7 @@ body {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -178,7 +180,7 @@ body {
     background: linear-gradient(135deg, var(--bg-card) 0%, hsl(var(--secondary-hue), 15%, 20%) 100%);
 }
 
-.category-card > * {
+.category-card>* {
     position: relative;
     z-index: 1;
 }
@@ -410,14 +412,31 @@ body {
 }
 
 @keyframes correctPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
 }
 
 .quiz-footer {
@@ -429,18 +448,21 @@ body {
     border-radius: var(--radius-md);
 }
 
-.score-display, .streak-display {
+.score-display,
+.streak-display {
     display: flex;
     gap: var(--spacing-xs);
     align-items: center;
 }
 
-.score-label, .streak-icon {
+.score-label,
+.streak-icon {
     color: var(--text-secondary);
     font-size: 0.95rem;
 }
 
-.score-value, .streak-value {
+.score-value,
+.streak-value {
     font-weight: 700;
     font-size: 1.1rem;
     color: var(--accent-primary);
@@ -487,6 +509,7 @@ body {
         opacity: 0;
         transform: translateY(50px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -626,8 +649,15 @@ body {
 }
 
 @keyframes celebratePulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
 }
 
 .result-actions {
@@ -637,14 +667,16 @@ body {
 }
 
 /* ===== 進捗管理画面 ===== */
-.stats-header, .records-header {
+.stats-header,
+.records-header {
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-xl);
 }
 
-.stats-title, .records-title {
+.stats-title,
+.records-title {
     font-size: 2rem;
     font-weight: 700;
 }
@@ -689,7 +721,8 @@ body {
     color: var(--text-secondary);
 }
 
-.stats-actions, .records-actions {
+.stats-actions,
+.records-actions {
     text-align: center;
 }
 
@@ -795,42 +828,154 @@ body {
 /* ===== レスポンシブ ===== */
 @media (max-width: 768px) {
     .screen {
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-sm);
     }
-    
+
+    .app-header {
+        margin-bottom: var(--spacing-md);
+    }
+
     .category-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
     }
-    
+
+    .category-card {
+        padding: var(--spacing-md);
+    }
+
+    .card-icon {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
     .quiz-header {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-        align-items: flex-start;
+        margin-bottom: var(--spacing-xs);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
-    
+
+    .category-badge {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+    }
+
+    .question-counter {
+        font-size: 1rem;
+    }
+
+    .quiz-progress-bar {
+        height: 6px;
+        margin-bottom: var(--spacing-sm);
+    }
+
     .question-card {
-        padding: var(--spacing-lg);
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+        border-left-width: 3px;
     }
-    
+
+    .question-text {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+
+    .choices-container {
+        gap: 8px;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .choice-btn {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
     .quiz-footer {
-        flex-direction: column;
-        gap: var(--spacing-sm);
+        padding: 8px var(--spacing-sm);
+        margin-top: 0;
     }
-    
+
+    .score-value,
+    .streak-value {
+        font-size: 1rem;
+    }
+
+    /* モーダルの最適化 */
+    .modal-content {
+        max-height: 90vh;
+    }
+
+    .modal-header {
+        padding: var(--spacing-sm);
+    }
+
+    .result-icon {
+        font-size: 2rem;
+    }
+
+    .result-text {
+        font-size: 1.2rem;
+    }
+
+    .modal-body {
+        padding: var(--spacing-sm);
+    }
+
+    .correct-answer {
+        padding: 8px;
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .explanation-text {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .modal-footer {
+        padding: var(--spacing-sm);
+    }
+
+    /* 結果画面の最適化 */
+    .result-title {
+        font-size: 1.8rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .result-score-card {
+        padding: var(--spacing-md);
+    }
+
+    .score-number {
+        font-size: 3.5rem;
+    }
+
     .score-details {
-        grid-template-columns: 1fr;
-    }
-    
-    .result-actions {
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-sm);
     }
-    
-    .stats-grid {
-        grid-template-columns: 1fr;
+
+    .detail-value {
+        font-size: 1.1rem;
     }
-    
+
     .best-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+}
+
+/* 超小型デバイス向けの追加調整 */
+@media (max-width: 380px) {
+    .question-text {
+        font-size: 1rem;
+    }
+
+    .choice-btn {
+        padding: 8px 12px;
+        font-size: 0.875rem;
     }
 }
 
