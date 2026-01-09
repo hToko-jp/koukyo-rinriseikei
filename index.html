@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="共通テスト「公共」の学習アプリ。倫理・政治経済を重点的に学習できる総合型アプリ。">
+    <title>共通テスト 公共 学習アプリ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- ホーム画面 -->
+    <div id="home-screen" class="screen active">
+        <div class="container">
+            <header class="app-header">
+                <h1 class="app-title">📚 共通テスト 公共</h1>
+                <p class="app-subtitle">倫理・政治経済を重点学習</p>
+            </header>
+
+            <div class="category-grid">
+                <div class="category-card" data-category="ethics">
+                    <div class="card-icon">🏛️</div>
+                    <h2 class="card-title">倫理</h2>
+                    <p class="card-description">思想家・哲学の基礎</p>
+                    <div class="progress-info">
+                        <span class="progress-label">進捗率</span>
+                        <span class="progress-value" id="ethics-progress">0%</span>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="politics">
+                    <div class="card-icon">⚖️</div>
+                    <h2 class="card-title">政治</h2>
+                    <p class="card-description">民主主義・憲法・制度</p>
+                    <div class="progress-info">
+                        <span class="progress-label">進捗率</span>
+                        <span class="progress-value" id="politics-progress">0%</span>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="economics">
+                    <div class="card-icon">💰</div>
+                    <h2 class="card-title">経済</h2>
+                    <p class="card-description">市場・財政・金融</p>
+                    <div class="progress-info">
+                        <span class="progress-label">進捗率</span>
+                        <span class="progress-value" id="economics-progress">0%</span>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="international">
+                    <div class="card-icon">🌍</div>
+                    <h2 class="card-title">国際社会</h2>
+                    <p class="card-description">国際法・環境問題</p>
+                    <div class="progress-info">
+                        <span class="progress-label">進捗率</span>
+                        <span class="progress-value" id="international-progress">0%</span>
+                    </div>
+                </div>
+
+                <div class="category-card special" data-category="all">
+                    <div class="card-icon">🎯</div>
+                    <h2 class="card-title">総合</h2>
+                    <p class="card-description">全分野ランダム</p>
+                    <div class="progress-info">
+                        <span class="progress-label">全体進捗</span>
+                        <span class="progress-value" id="all-progress">0%</span>
+                    </div>
+                </div>
+
+                <div class="category-card special" data-category="review" id="review-card">
+                    <div class="card-icon">🔄</div>
+                    <h2 class="card-title">復習</h2>
+                    <p class="card-description">間違えた問題</p>
+                    <div class="progress-info">
+                        <span class="progress-label">復習問題</span>
+                        <span class="progress-value" id="review-count">0問</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" id="records-btn">📊 自己記録</button>
+                <button class="btn btn-secondary" id="stats-btn">📈 進捗管理</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- クイズ画面 -->
+    <div id="quiz-screen" class="screen">
+        <div class="container">
+            <div class="quiz-header">
+                <button class="btn-back" id="quit-quiz">← 戻る</button>
+                <div class="quiz-info">
+                    <span class="category-badge" id="current-category"></span>
+                    <span class="question-counter" id="question-counter">1/20</span>
+                </div>
+            </div>
+
+            <div class="quiz-progress-bar">
+                <div class="quiz-progress-fill" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-card">
+                <p class="question-text" id="question-text"></p>
+            </div>
+
+            <div class="choices-container" id="choices-container">
+                <!-- 選択肢が動的に挿入される -->
+            </div>
+
+            <div class="quiz-footer">
+                <div class="score-display">
+                    <span class="score-label">正解数:</span>
+                    <span class="score-value" id="current-score">0/0</span>
+                </div>
+                <div class="streak-display">
+                    <span class="streak-icon">🔥</span>
+                    <span class="streak-value" id="streak-count">0連続</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 解説モーダル -->
+    <div id="explanation-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="result-indicator" id="result-indicator">
+                    <span class="result-icon" id="result-icon"></span>
+                    <span class="result-text" id="result-text"></span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="correct-answer" id="correct-answer"></div>
+                <div class="explanation-text" id="explanation-text"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="next-question">次の問題</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 結果画面 -->
+    <div id="result-screen" class="screen">
+        <div class="container">
+            <div class="result-container">
+                <h2 class="result-title">クイズ結果</h2>
+
+                <div class="result-score-card">
+                    <div class="final-score">
+                        <span class="score-number" id="final-score">0</span>
+                        <span class="score-unit">点</span>
+                    </div>
+                    <div class="score-details">
+                        <div class="detail-item">
+                            <span class="detail-label">正解数</span>
+                            <span class="detail-value" id="correct-count">0/20</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">正答率</span>
+                            <span class="detail-value" id="accuracy-rate">0%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">最大連続</span>
+                            <span class="detail-value" id="max-streak">0問</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="personal-best" id="personal-best-message"></div>
+
+                <div class="result-actions">
+                    <button class="btn btn-primary" id="retry-btn">もう一度挑戦</button>
+                    <button class="btn btn-secondary" id="home-btn">ホームに戻る</button>
+                    <button class="btn btn-secondary" id="review-wrong-btn">間違えた問題を復習</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 進捗管理画面 -->
+    <div id="stats-screen" class="screen">
+        <div class="container">
+            <div class="stats-header">
+                <button class="btn-back" id="stats-back">← 戻る</button>
+                <h2 class="stats-title">進捗管理</h2>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 class="stat-card-title">倫理</h3>
+                    <div class="stat-meter">
+                        <div class="stat-meter-fill" id="ethics-meter"></div>
+                    </div>
+                    <p class="stat-text" id="ethics-stat">0問正解 / 0問中</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 class="stat-card-title">政治</h3>
+                    <div class="stat-meter">
+                        <div class="stat-meter-fill" id="politics-meter"></div>
+                    </div>
+                    <p class="stat-text" id="politics-stat">0問正解 / 0問中</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 class="stat-card-title">経済</h3>
+                    <div class="stat-meter">
+                        <div class="stat-meter-fill" id="economics-meter"></div>
+                    </div>
+                    <p class="stat-text" id="economics-stat">0問正解 / 0問中</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 class="stat-card-title">国際社会</h3>
+                    <div class="stat-meter">
+                        <div class="stat-meter-fill" id="international-meter"></div>
+                    </div>
+                    <p class="stat-text" id="international-stat">0問正解 / 0問中</p>
+                </div>
+            </div>
+
+            <div class="stats-actions">
+                <button class="btn btn-danger" id="reset-stats">データをリセット</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自己記録画面 -->
+    <div id="records-screen" class="screen">
+        <div class="container">
+            <div class="records-header">
+                <button class="btn-back" id="records-back">← 戻る</button>
+                <h2 class="records-title">自己記録</h2>
+            </div>
+
+            <div class="personal-bests">
+                <h3 class="section-title">自己ベストスコア</h3>
+                <div class="best-grid">
+                    <div class="best-card">
+                        <div class="best-label">総合</div>
+                        <div class="best-score" id="best-overall">---</div>
+                    </div>
+                    <div class="best-card">
+                        <div class="best-label">倫理</div>
+                        <div class="best-score" id="best-ethics">---</div>
+                    </div>
+                    <div class="best-card">
+                        <div class="best-label">政治</div>
+                        <div class="best-score" id="best-politics">---</div>
+                    </div>
+                    <div class="best-card">
+                        <div class="best-label">経済</div>
+                        <div class="best-score" id="best-economics">---</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-records">
+                <h3 class="section-title">最近の記録</h3>
+                <div class="records-list" id="recent-records-list">
+                    <p class="no-records">まだ記録がありません</p>
+                </div>
+            </div>
+
+            <div class="records-actions">
+                <button class="btn btn-danger" id="reset-records">記録をリセット</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="questions-ethics2.js"></script>
+    <script src="questions-politics.js"></script>
+    <script src="questions-economics.js"></script>
+    <script src="questions-international.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
