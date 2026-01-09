@@ -877,7 +877,7 @@ body {
     }
 
     .question-text {
-        font-size: 1.1rem;
+        font-size: 20px;
         line-height: 1.5;
     }
 
@@ -888,7 +888,7 @@ body {
 
     .choice-btn {
         padding: 10px 14px;
-        font-size: 0.95rem;
+        font-size: 20px;
         line-height: 1.4;
     }
 
@@ -925,12 +925,12 @@ body {
 
     .correct-answer {
         padding: 8px;
-        font-size: 0.9rem;
+        font-size: 20px;
         margin-bottom: var(--spacing-sm);
     }
 
     .explanation-text {
-        font-size: 0.9rem;
+        font-size: 18px;
         line-height: 1.6;
     }
 
@@ -967,17 +967,6 @@ body {
     }
 }
 
-/* 超小型デバイス向けの追加調整 */
-@media (max-width: 380px) {
-    .question-text {
-        font-size: 1rem;
-    }
-
-    .choice-btn {
-        padding: 8px 12px;
-        font-size: 0.875rem;
-    }
-}
 
 /* ===== スクロールバー ===== */
 ::-webkit-scrollbar {
